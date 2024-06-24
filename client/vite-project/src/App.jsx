@@ -1,15 +1,19 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { useUser } from '@clerk/clerk-react'
+import {  Route, Routes } from 'react-router-dom';
+import { Navigate, Outlet } from'react-router-dom'
+import Header from './components/ui/custom/Header'
 
 function App() {
-  const [count, setCount] = useState(0)
-
+const {user, isLoaded, isSignedIn}=useUser();
+if(!isSignedIn&&isLoaded) {
+  return <Navigate to={'/auth/sign-in'}/>
+}
   return (
  <>
- Subscribe To Tableguruji !
- <button onClick={() => setCount(count + 1)}>{count}</button>
+ <Header/>
+<Outlet/>
  </>
   )
 }
