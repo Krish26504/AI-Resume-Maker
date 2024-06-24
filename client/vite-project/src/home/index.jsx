@@ -4,7 +4,7 @@ import { UserButton } from '@clerk/clerk-react'
 const Home = () => {
   return (
     <div className='display item float-end'>
-        <UserButton/>
+        
 
 
         
